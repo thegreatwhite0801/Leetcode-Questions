@@ -1,0 +1,19 @@
+name: Sync Leetcode
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 6"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sync
+        uses: joshcai/leetcode-sync@v1.5
+        with:
+          github-token: ${{ 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 }}
+          leetcode-csrf-token: ${{ y0vsrqAcjdIXLxnSLu4129dmFrVc7lI0bTrpfsip56tIritFMQIJnRAH5rcU5d7e }}
+          leetcode-session: ${{ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiNDYwNjE1OCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjgwMWY0MzI3NGE0MDY0OTc2MTU1NzkzMTM1OWIzNTZiZGQ4NWE2MmUiLCJpZCI6NDYwNjE1OCwiZW1haWwiOiJ2aXNoYWwwODAxMDFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJTbW9rZWRTYWxtb24wMSIsInVzZXJfc2x1ZyI6IlNtb2tlZFNhbG1vbjAxIiwiYXZhdGFyIjoiaHR0cHM6Ly9hc3NldHMubGVldGNvZGUuY29tL3VzZXJzL3Zpc2hhbDA4MDEwMS9hdmF0YXJfMTYyNjc1OTQ4NS5wbmciLCJyZWZyZXNoZWRfYXQiOjE2NzM3MDkxMjAsImlwIjoiMTM2LjIzMy45LjEyMSIsImlkZW50aXR5IjoiODZlYTgyMDI4MmM1YzdhODVmNWZhYjliZjExNDBjNDIiLCJzZXNzaW9uX2lkIjozMzUzNTIyNX0.hkYgT_bhhqeiAZ7hiroWihFNm3Gajnu1m-KRHEKkTlc }}
+          destination-folder: my-folder
