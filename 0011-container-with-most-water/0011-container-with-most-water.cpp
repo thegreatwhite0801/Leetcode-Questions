@@ -1,26 +1,20 @@
-#include <algorithm>
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        vector<int>array ; 
-        int k = height.size()- 1 ; 
-        int i = 0 ;
-        while(i!=k){
-        int min = std::min(height[i],height[k]); 
-        array.push_back(min*(k-i)); 
-        if(min == height[i])
-            i +=1 ; 
-        
-        else{
-        k-=1 ; 
-    }}
-    int max = 0 ;
-    for (int i = 0 ; i <array.size(); i++){
-        if(array[i]>=max){
-            max = array[i] ; 
-        }
-    }
+       int maxm =INT_MIN ; 
+     int fwd = 0; 
+        int back= height.size()-1; 
+       while(fwd<back){
+        int minm = min(height[fwd],height[back]); 
+           maxm =max(maxm,minm*(back-fwd));   
+            if(height[fwd]>=height[back]){
+                back--; 
+            }     
+     else{fwd++; }
+       
+       }
     
-    return max ; 
+    return maxm ;
+    
     }
 };
