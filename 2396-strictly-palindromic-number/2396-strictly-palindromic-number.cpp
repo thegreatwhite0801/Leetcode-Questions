@@ -1,33 +1,19 @@
 class Solution {
 public:
-  
-     
-
-    
-    
     bool isStrictlyPalindromic(int n) {
-    bool flag =true ; 
-        int count = 2;
-        int remainder = 0; 
-        
-    while(flag!=false && count<=n-2){
-        int temp = count ; 
-       vector<int>bin; 
+       
+    for(int i = 2;i<=n-2;i++){
+        int temp = n ;
+        string s =""; 
         while(temp>0){
-            int t = temp%2 ; 
-            bin.push_back(t); 
-            temp = temp/2 ; 
+        int rem =temp%i ; 
+        temp=temp/i;
+            s+=to_string(rem); 
         }
-        vector<int>check= bin; 
-        for(auto x : check)cout<<x ; 
-        reverse(bin.begin(),bin.end()) ; 
-for(auto x : bin){cout<<" "  ; cout<<x ; }
-        if(check!=bin)flag=false ;
-        check.clear(); 
-        bin.clear(); 
-        count+=1; 
-        
-    }  
-    return flag ; 
+   string str = s; 
+    reverse(s.begin(),s.end()); 
+    if(str!=s)return false; 
+    }
+        return true ;
     }
 };
