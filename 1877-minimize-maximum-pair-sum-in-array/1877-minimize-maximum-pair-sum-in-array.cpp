@@ -5,8 +5,8 @@ public:
    int final =INT_MIN ; 
    int n = nums.size();
         for(int i = 0 ; i<n/2;i++){
-        int temp =nums[i]+nums[n-1-i];
-         final=max(temp,final); 
+        
+         final=max(nums[i]+nums[n-1-i],final); 
     }  
     return final;    
         
