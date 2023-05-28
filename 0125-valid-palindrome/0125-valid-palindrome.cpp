@@ -13,12 +13,9 @@ public:
             }
             else if(isdigit(x)){
                 pal+=x; 
-            }
-       
-        
-        
+            }     
         } 
- cout<<pal<<endl ;
+
     string temp = pal ; 
 reverse(pal.begin(),pal.end());
         return temp==pal;
