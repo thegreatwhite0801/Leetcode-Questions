@@ -1,17 +1,28 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-      string m =""; 
-        for(char&x:s){
-        x = tolower(x); 
-            if(int(x)>=48&&int(x)<=57){
-            m+=tolower(x) ;}
-            if(int(x)>=97&&int(x)<=122){
-            m+=tolower(x) ;}
-      } 
-        string k ="";
-k=m;  
-     reverse(m.begin(),m.end());
-        return m==k; 
+      string pal =""; 
+        for(auto x :s ){
+           if(int(x)>=65&&int(x)<=90){
+             
+              
+               pal+= tolower(x);  
+           }
+            else if(int(x)>=97&&int(x)<=122){
+                pal += x; 
+            }
+            else if(isdigit(x)){
+                pal+=x; 
+            }
+       
+        
+        
+        } 
+ cout<<pal<<endl ;
+    string temp = pal ; 
+reverse(pal.begin(),pal.end());
+        return temp==pal;
+    
+    
     }
 };
