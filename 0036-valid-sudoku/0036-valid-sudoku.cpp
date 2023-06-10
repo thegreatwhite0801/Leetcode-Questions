@@ -1,44 +1,25 @@
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
-        unordered_map<string,int>map1 ; 
-        ; 
-        for(int rows = 0 ; rows<9;rows++){
-            for(int column = 0 ;column<9;column++){
-        if(board[rows][column]!='.'){        
-        string row1 = "element "+to_string(board[rows][column]) +" found in row " + to_string(rows) ; 
-        string column1 = "element "+to_string(board[rows][column]) +" found in column " + to_string(column) ; 
-        string box_no = "element "+to_string(board[rows][column]) +" found in box " + to_string(rows/3) +" "+to_string(column/3) ;         
-      if(map1.find(row1)!= map1.end() ||map1.find(column1)!=map1.end() || map1.find(box_no)!=map1.end()){
-          
-          return false ; 
-          
-          
-           }
-                
-    map1[row1]++ ; 
-    map1[column1]++ ; 
-    map1[box_no]++ ; 
+      unordered_map<string,int>rows; 
+    unordered_map<string,int>columns; 
+        unordered_map<string,int>boxes;
+for(int i = 0 ; i<board.size();i++){
+    for(int j = 0 ; j <board[0].size();j++){
+        if(board[i][j]!='.'){
+        string boards = ""; 
+        boards+=board[i][j]; 
+        string row = "element"+boards+"is in row"+to_string(i+1) ; 
+        string col = "element"+boards+"is in col"+to_string(j+1) ; 
+        string box =  "element"+boards+"is in box"+to_string(i/3*3+j/3);
+    rows[row]++ ;
+    columns[col]++ ; 
+    boxes[box]++; 
+        if(rows[row]>1||columns[col]>1||boxes[box]>1)return false; 
     
-    
-    
-     
-      
-    
-    
-      }     
-        
-        
-        
         }
-                
-                
-                
-            }
-           return true ; 
-            
-            
-            
         }
-    
+}
+   return true;      
+    }
 };
