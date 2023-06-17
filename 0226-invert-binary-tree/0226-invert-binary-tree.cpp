@@ -12,25 +12,18 @@
 class Solution {
 public:
    
-    void dfs(TreeNode* root){
+    void inverter(TreeNode* root){
         if(root==NULL)return ; 
-        TreeNode*lf1=NULL; 
-        TreeNode*rf1=NULL; 
-        if(root->left!=NULL){
-         lf1= root->left; 
-        }
-        if(root->right!=NULL){
-         rf1= root->right; 
-        }
-    root->right = lf1; 
-    root->left = rf1 ;
-        dfs(root->left); 
-        dfs(root->right); 
-        
+        TreeNode* temp =root->left; 
+        root->left = root->right ;
+        root->right=temp ; 
+        inverter(root->left);
+        inverter(root->right);
     }
     
+    
     TreeNode* invertTree(TreeNode* root) {
-     dfs(root); 
-        return root; 
+        inverter(root); 
+        return root ; 
     }
 };
