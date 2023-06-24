@@ -11,18 +11,10 @@
  */
 class Solution {
 public:
-    bool flag = true;
-    void dfs(TreeNode*p,TreeNode*q){
-        if(p==NULL&&q==NULL)return ;
-        if(p==NULL){flag =false;return;} 
-        if(q==NULL){flag= false;return;}
-        if(p!=NULL&&q!=NULL&&(p->val)!=(q->val)){flag=false;return;} 
-        dfs(p->left,q->left);
-        dfs(p->right,q->right);
-    }
-    
     bool isSameTree(TreeNode* p, TreeNode* q) {
-     dfs(p,q); 
-        return flag ; 
+        if(!p && !q)return true; 
+        if((!p&&q)||(!q&&p)||(p->val != q->val))return false; 
+        if(p->val==q->val)return isSameTree(p->left,q->left) && isSameTree(p->right,q->right); 
+        return false; 
     }
 };
