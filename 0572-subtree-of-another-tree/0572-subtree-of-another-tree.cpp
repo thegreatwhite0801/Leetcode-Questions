@@ -11,21 +11,23 @@
  */
 class Solution {
 public:
-   
-    bool checker(TreeNode*root1,TreeNode*root2){
-    if(root1==NULL&&root2==NULL)return true;
-    if(root1==NULL||root2==NULL)return false;  
-    if((root1->val)!=(root2->val))return false;  
-    return checker(root1->left,root2->left)&&checker(root1->right,root2->right)  ;    
+    
+    bool checker(TreeNode *p ,TreeNode*q){
+        if(!p &&!q)return true; 
+        if((!p&&q)||(p&&!q)||(p->val != q->val))return false; 
+        return checker(p->left,q->left) && checker(p->right,q->right);
+    }
+    bool flag= false;
+    
+    void traversal(TreeNode*root,TreeNode* subroot){
+       if(root==NULL)return ; 
+        if((root->val)==(subroot->val))flag=flag || checker(root,subroot); 
+        traversal(root->left,subroot);
+        traversal(root->right,subroot); 
     }
     
-    
-    
-    
-    
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-    if(root==NULL)return false ;
-    return checker(root,subRoot) || isSubtree(root->left,subRoot) ||  isSubtree(root->right, subRoot);
-     
+        traversal(root,subRoot); 
+        return flag; 
     }
 };
